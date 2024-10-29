@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="using:SELApp.ViewModels"
+             x:Class="SELApp.Views.AuthPage"
+             x:DataType="viewmodels:AuthPageViewModel">
+    
+    <StackLayout Spacing="10" VerticalOptions="Center" 
+             HorizontalOptions="FillAndExpand" Margin="30,0">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
+            <Image Source="graduation.png" HeightRequest="64" VerticalOptions="Center"/>
+            <Label VerticalOptions="Center" FontSize="24">University Smart Education</Label>
+        </StackLayout>
+        <Label Text="Авторизація" HorizontalOptions="Center" FontSize="18"/>
+        <Label Text="Логін"/>
+        <Entry Text="{Binding Username}"/>
+        <Label Text="Пароль"/>
+        <Entry IsPassword="True" Text="{Binding Password}"/>
+        <Button Text="Увійти" Command="{Binding SingInCommand}"/>
+        <Label TextColor="Red" Text="{Binding ErrorMessage}"/>
+    </StackLayout>
+</ContentPage>

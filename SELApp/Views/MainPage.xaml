@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="using:SELApp.ViewModels"
+             xmlns:views="using:SELApp.Views"
+             x:Class="SELApp.Views.MainPage"
+             x:DataType="viewmodels:MainPageViewModel">
+    <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10">
+        <StackLayout Orientation="Horizontal" Spacing="10">
+            <Image Source="check.png" HeightRequest="32" VerticalOptions="Center"/>
+            <Label Text="{Binding GreetingMessage}" VerticalOptions="Center" FontSize="18"/>
+        </StackLayout>
+        <Label Text="Очікуйте подальших сповіщень." FontSize="18" HorizontalOptions="Center"/>
+    </StackLayout>
+</ContentPage>

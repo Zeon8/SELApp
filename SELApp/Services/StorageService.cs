@@ -25,7 +25,7 @@ namespace SELApp.Services
 
         private static string GetPath()
         {
-            var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             return Path.Combine(folderPath, "user.json");
         }
     }

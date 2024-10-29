@@ -4,8 +4,8 @@ namespace SELApp.Models
 {
     public record AuthorizationRequest
     {
-        [JsonPropertyName("id")]
-        public string Username { get; init; }
+        [JsonPropertyName("phone")]
+        public string PhoneNumber { get; init; }
 
         [JsonPropertyName("password")]
         public string Password { get; init; }
@@ -13,9 +13,9 @@ namespace SELApp.Models
         [JsonPropertyName("firebase_token")]
         public string FirebaseToken { get; init; }
 
-        public AuthorizationRequest(string username, string password, string firebaseToken)
+        public AuthorizationRequest(string phoneNumber, string password, string firebaseToken)
         {
-            Username = username;
+            PhoneNumber = phoneNumber;
             Password = password;
             FirebaseToken = firebaseToken;
         }

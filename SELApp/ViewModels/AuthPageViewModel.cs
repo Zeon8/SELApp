@@ -7,7 +7,7 @@ namespace SELApp.ViewModels
 {
     public partial class AuthPageViewModel : ObservableObject
     {
-        public string? Username { get; set; }
+        public string? PhoneNumber { get; set; }
         public string? Password { get; set; }
 
         [ObservableProperty]
@@ -28,10 +28,10 @@ namespace SELApp.ViewModels
         [RelayCommand]
         public async Task SingIn()
         {
-            if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password))
+            if (string.IsNullOrEmpty(PhoneNumber) || string.IsNullOrEmpty(Password))
                 return;
 
-            User? user = await _authService.TryAuthorize(Username, Password, "test");
+            User? user = await _authService.TryAuthorize(PhoneNumber, Password, "test");
             if (user is not null)
             {
                 await _sessionStorage.Save(user);

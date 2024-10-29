@@ -12,10 +12,10 @@
             <Label VerticalOptions="Center" FontSize="20">University Smart Education</Label>
         </StackLayout>
         <Label Text="Авторизація" HorizontalOptions="Center" FontSize="18"/>
-        <Label Text="Логін"/>
-        <Entry Text="{Binding Username}"/>
+        <Label Text="Номер телефону"/>
+        <Entry Text="{Binding PhoneNumber}"/>
         <Label Text="Пароль"/>
-        <Entry IsPassword="True" Text="{Binding Password}"/>
+        <Entry ReturnCommand="{Binding SingInCommand}" IsPassword="True" Text="{Binding Password}"/>
         <Button Text="Увійти" Command="{Binding SingInCommand}"/>
         <Label TextColor="Red" Text="{Binding ErrorMessage}"/>
     </StackLayout>

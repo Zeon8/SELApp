@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Plugin.FirebasePushNotifications;
 using SELApp.Models;
 using SELApp.Services;
 
@@ -16,18 +17,22 @@ namespace SELApp.ViewModels
 
         private readonly ISessionStorageService _sessionStorage;
         private readonly INavigationService _navigation;
+        private readonly IFirebasePushNotification _pushNotification;
 
-        public MainPageViewModel(ISessionStorageService sessionStorage, INavigationService navigation)
+        public MainPageViewModel(ISessionStorageService sessionStorage, INavigationService navigation, 
+            IFirebasePushNotification pushNotification)
         {
             _sessionStorage = sessionStorage;
             _navigation = navigation;
+            _pushNotification = pushNotification;
         }
 
         [RelayCommand]
-        private Task Signout()
+        private async Task Signout()
         {
             _sessionStorage.Delete();
-            return _navigation.GoToAuthPage();
+            await _pushNotification.UnregisterForPushNotificationsAsync();
+            await _navigation.GoToAuthPage();
         }
     }
 }

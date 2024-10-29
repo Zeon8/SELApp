@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Plugin.FirebasePushNotifications;
 using SELApp.Services;
 using SELApp.ViewModels;
 using SELApp.Views;
@@ -12,6 +13,7 @@ namespace SELApp
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseFirebasePushNotifications()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

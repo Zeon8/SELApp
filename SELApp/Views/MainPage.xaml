@@ -11,5 +11,6 @@
             <Label Text="{Binding GreetingMessage}" VerticalOptions="Center" FontSize="18"/>
         </StackLayout>
         <Label Text="Очікуйте подальших сповіщень." FontSize="18" HorizontalOptions="Center"/>
+        <Button Text="Вийти з облікового запису" Command="{Binding SignoutCommand}"/>
     </StackLayout>
 </ContentPage>

@@ -28,5 +28,7 @@ namespace SELApp.Services
             var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             return Path.Combine(folderPath, "user.json");
         }
+
+        public void Delete() => File.Delete(GetPath());
     }
 }

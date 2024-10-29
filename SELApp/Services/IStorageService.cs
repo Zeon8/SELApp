@@ -6,5 +6,6 @@ namespace SELApp.Services
     {
         Task<User?> Load();
         Task Save(User user);
+        void Delete();
     }
 }

@@ -40,7 +40,7 @@ namespace SELApp.ViewModels
                 return;
 
             string token = await GetFirebaseToken();
-            User? user = await _authService.TryAuthorize(PhoneNumber, Password, token);
+            User? user = await _authService.Authorize(PhoneNumber, Password, token);
             if (user is not null)
             {
                 await _sessionStorage.Save(user);

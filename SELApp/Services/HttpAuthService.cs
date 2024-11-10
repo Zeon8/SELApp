@@ -13,7 +13,7 @@ namespace SELApp.Services
             _httpClient = httpClient;
         }
 
-        public async Task<User?> TryAuthorize(string username, string password, string firebaseToken)
+        public async Task<User?> Authorize(string username, string password, string firebaseToken)
         {
             var data = new AuthorizationRequest(username, password, firebaseToken);
             var response = await _httpClient.PostAsJsonAsync("api/get-firebase-id-token", data);

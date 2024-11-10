@@ -4,6 +4,6 @@ namespace SELApp.Services
 {
     public interface IAuthService
     {
-        public Task<User?> TryAuthorize(string username, string password, string firebaseToken);
+        public Task<User?> Authorize(string username, string password, string firebaseToken);
     }
 }

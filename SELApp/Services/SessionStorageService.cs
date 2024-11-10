@@ -3,7 +3,7 @@ using SELApp.Models;
 
 namespace SELApp.Services
 {
-    public class StorageService : ISessionStorageService
+    public class SessionStorageService
     {
         public async Task<User?> Load()
         {

@@ -15,14 +15,16 @@ namespace SELApp.ViewModels
         [ObservableProperty]
         private string? _errorMessage;
 
-        private readonly IAuthService _authService;
-        private readonly INavigationService _navigationService;
-        private readonly ISessionStorageService _sessionStorage;
+        private readonly HttpAuthService _authService;
+        private readonly NavigationService _navigationService;
+        private readonly SessionStorageService _sessionStorage;
+
         private readonly IFirebasePushNotification _pushNotification;
         private readonly INotificationPermissions _notificationPermissions;
 
-        public AuthPageViewModel(IAuthService authService, INavigationService navigationService,
-            ISessionStorageService sessionStorage, 
+        public AuthPageViewModel(HttpAuthService authService, 
+            NavigationService navigationService, 
+            SessionStorageService sessionStorage, 
             IFirebasePushNotification pushNotification, 
             INotificationPermissions notificationPermissions)
         {

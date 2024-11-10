@@ -34,9 +34,9 @@ namespace SELApp
             {
                 BaseAddress = new Uri(Globals.ServerAdress)
             });
-            builder.Services.AddSingleton<IAuthService, HttpAuthService>();
-            builder.Services.AddSingleton<INavigationService, NavigationService>();
-            builder.Services.AddSingleton<ISessionStorageService, StorageService>();
+            builder.Services.AddSingleton<HttpAuthService>();
+            builder.Services.AddSingleton<NavigationService>();
+            builder.Services.AddSingleton<StorageService>();
 
             builder.Services.AddTransient<AuthPageViewModel>();
             builder.Services.AddTransient<MainPageViewModel>();

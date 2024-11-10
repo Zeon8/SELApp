@@ -4,7 +4,7 @@ using SELApp.Models;
 
 namespace SELApp.Services
 {
-    public class HttpAuthService : IAuthService
+    public class HttpAuthService
     {
         private readonly HttpClient _httpClient;
 

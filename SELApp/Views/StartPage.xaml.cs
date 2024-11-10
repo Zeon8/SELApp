@@ -6,10 +6,10 @@ namespace SELApp.Views;
 
 public partial class StartPage : ContentPage
 {
-    private readonly INavigationService _navigation;
-    private readonly ISessionStorageService _sessionStorage;
+    private readonly NavigationService _navigation;
+    private readonly SessionStorageService _sessionStorage;
 
-    public StartPage(INavigationService navigationService, ISessionStorageService sessionStorage)
+    public StartPage(NavigationService navigationService, SessionStorageService sessionStorage)
     {
         InitializeComponent();
         _navigation = navigationService;

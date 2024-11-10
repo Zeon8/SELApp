@@ -2,7 +2,7 @@
 
 namespace SELApp.Services
 {
-    public class NavigationService : INavigationService
+    public class NavigationService
     {
         public Task GoToAuthPage()
         {

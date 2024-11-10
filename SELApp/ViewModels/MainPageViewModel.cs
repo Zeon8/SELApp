@@ -15,11 +15,12 @@ namespace SELApp.ViewModels
         [NotifyPropertyChangedFor(nameof(GreetingMessage))]
         private User _user = default!;
 
-        private readonly ISessionStorageService _sessionStorage;
-        private readonly INavigationService _navigation;
+        private readonly SessionStorageService _sessionStorage;
+        private readonly NavigationService _navigation;
         private readonly IFirebasePushNotification _pushNotification;
 
-        public MainPageViewModel(ISessionStorageService sessionStorage, INavigationService navigation, 
+        public MainPageViewModel(SessionStorageService sessionStorage, 
+            NavigationService navigation, 
             IFirebasePushNotification pushNotification)
         {
             _sessionStorage = sessionStorage;

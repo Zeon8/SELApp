@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace SELApp.Models
+namespace SELApp.Models.Authorization
 {
     public record AuthorizationRequest
     {

@@ -1,6 +1,7 @@
 ﻿
 using System.Net.Http.Json;
 using SELApp.Models;
+using SELApp.Models.Authorization;
 
 namespace SELApp.Services
 {

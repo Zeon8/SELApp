@@ -1,8 +1,10 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Plugin.FirebasePushNotifications;
 using SELApp.Services;
 using SELApp.ViewModels;
 using SELApp.Views;
+using System.Reflection;
 
 namespace SELApp
 {
@@ -18,13 +20,22 @@ namespace SELApp
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                })
-                .ConfigureServices();
+                });
 
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
 
+            var a = Assembly.GetExecutingAssembly();
+            using var stream = a.GetManifestResourceStream("SELApp.Resources.Raw.appsettings.development.json")
+                ?? throw new InvalidOperationException("Failed to load app configuration.");
+            
+            var configuration = new ConfigurationBuilder()
+                .AddJsonStream(stream)
+                .Build();
+            builder.Configuration.AddConfiguration(configuration);
+
+            builder.ConfigureServices();
             return builder.Build();
         }
 
@@ -32,11 +43,12 @@ namespace SELApp
         {
             builder.Services.AddSingleton(new HttpClient()
             {
-                BaseAddress = new Uri(Globals.ServerAdress)
+                BaseAddress = new Uri(builder.Configuration.GetRequiredSection("ServerAdress").Value!)
             });
+
             builder.Services.AddSingleton<HttpAuthService>();
             builder.Services.AddSingleton<NavigationService>();
-            builder.Services.AddSingleton<StorageService>();
+            builder.Services.AddSingleton<SessionStorageService>();
 
             builder.Services.AddTransient<AuthPageViewModel>();
             builder.Services.AddTransient<MainPageViewModel>();

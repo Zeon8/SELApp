@@ -9,7 +9,8 @@ public partial class StartPage : ContentPage
     private readonly NavigationService _navigation;
     private readonly SessionStorageService _sessionStorage;
 
-    public StartPage(NavigationService navigationService, SessionStorageService sessionStorage)
+    public StartPage(NavigationService navigationService, 
+        SessionStorageService sessionStorage)
     {
         InitializeComponent();
         _navigation = navigationService;
@@ -20,7 +21,7 @@ public partial class StartPage : ContentPage
 
     private async Task LoadPage()
     {
-        User? user = await _sessionStorage.Load();
+        User? user = await _sessionStorage.GetUser();
         if(user is not null)
             await _navigation.GoToMainPage(user);
         else

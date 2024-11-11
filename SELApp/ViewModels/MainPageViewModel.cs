@@ -31,7 +31,7 @@ namespace SELApp.ViewModels
         [RelayCommand]
         private async Task Signout()
         {
-            _sessionStorage.Delete();
+            _sessionStorage.RemoveUser();
             await _pushNotification.UnregisterForPushNotificationsAsync();
             await _navigation.GoToAuthPage();
         }

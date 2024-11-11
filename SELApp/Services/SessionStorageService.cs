@@ -5,30 +5,25 @@ namespace SELApp.Services
 {
     public class SessionStorageService
     {
-        public async Task<User?> Load()
+        private User? _user;
+
+        public async Task<User?> GetUser()
         {
-            string path = GetPath();
-            if (File.Exists(path))
-            {
-                string data = await File.ReadAllTextAsync(path);
-                return JsonSerializer.Deserialize<User>(data);
-            }
-            return null;
+            if(_user is not null)
+                return _user;
+
+            string? data = await SecureStorage.GetAsync("user");
+            if(data is null) return null;
+            return _user = JsonSerializer.Deserialize<User>(data);
         }
 
         public Task Save(User user)
         {
-            string path = GetPath();
             string data = JsonSerializer.Serialize(user);
-            return File.WriteAllTextAsync(path, data);
+            return SecureStorage.SetAsync("user", data);
         }
 
-        private static string GetPath()
-        {
-            var folderPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            return Path.Combine(folderPath, "user.json");
-        }
+        public void RemoveUser() => SecureStorage.Remove("user");
 
-        public void Delete() => File.Delete(GetPath());
     }
 }

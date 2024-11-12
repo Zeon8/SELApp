@@ -10,11 +10,26 @@
     <ShellContent
         ContentTemplate="{DataTemplate views:StartPage}"
         Route="StartPage" />
+
     <ShellContent
         ContentTemplate="{DataTemplate views:AuthPage}"
         Route="Auth" />
-    <ShellContent
-        ContentTemplate="{DataTemplate views:MainPage}"
-        Route="Main" />
+
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+        <ShellContent ContentTemplate="{DataTemplate views:MainPage}" Route="Main" 
+                      Title="Головна">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="MaterialIcons" Glyph="&#xE88A;"/>
+            </ShellContent.Icon>
+        </ShellContent>
+        <ShellContent ContentTemplate="{DataTemplate views:SchedulePage}" Route="Schedule" 
+                      Title="Розклад">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="MaterialIcons" Glyph="&#xEBCC;"/>
+            </ShellContent.Icon>
+        </ShellContent>
+    </FlyoutItem>
+
+    
     
 </Shell>

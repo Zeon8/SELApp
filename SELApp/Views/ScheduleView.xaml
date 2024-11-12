@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:SELApp.ViewModels"
+             xmlns:modelsSchedule="clr-namespace:SELApp.Models.Schedule"
+             x:Class="SELApp.Views.SchedulePage"
+             x:DataType="viewmodels:SchedulePageViewModel"
+             Title="Розклад">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Завантажити в календар" Command="{Binding SaveCommand}" 
+                     Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid RowDefinitions="Auto, *">
+        <HorizontalStackLayout HeightRequest="20" VerticalOptions="Start" Grid.Row="0">
+            <CheckBox IsChecked="{Binding IsAllShown}" />
+            <Label VerticalOptions="Center" Text="Відображати всі пари">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ToggleIsAllShownCommand}"/>
+                </Label.GestureRecognizers>
+            </Label>
+        </HorizontalStackLayout>
+        <Grid Grid.Row="2">
+            <ActivityIndicator IsRunning="{Binding IsLoading}" HeightRequest="64" />
+            <CollectionView ItemsSource="{Binding Schedule}" Margin="10">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="modelsSchedule:DaySchedule">
+                        <VerticalStackLayout Spacing="5" Margin="0,0,0,10">
+                            <Label Text="{Binding Date}" FontSize="20" FontAttributes="Bold"/>
+                            <CollectionView ItemsSource="{Binding Classes}" Margin="10,0,0,0">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate x:DataType="modelsSchedule:Class">
+                                        <Border Background="{StaticResource Primary}" Margin="0,0,0,5">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="10"/>
+                                            </Border.StrokeShape>
+                                            <Label VerticalOptions="Center" Margin="10" 
+                                           TextColor="White" FontSize="18">
+                                                <Label.Text>
+                                                    <MultiBinding StringFormat="{}{0} пара {1} {2} {3}">
+                                                        <Binding Path="ClassNumber"/>
+                                                        <Binding Path="GroupNames"/>
+                                                        <Binding Path="SubjectName"/>
+                                                        <Binding Path="AuditoryName"/>
+                                                    </MultiBinding>
+                                                </Label.Text>
+                                            </Label>
+                                        </Border>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </Grid>
+</ContentPage>

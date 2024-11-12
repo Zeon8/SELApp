@@ -20,6 +20,7 @@ namespace SELApp
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("MaterialIcons-Regular.ttf", "MaterialIcons");
                 });
 
 #if DEBUG
@@ -49,13 +50,16 @@ namespace SELApp
             builder.Services.AddSingleton<HttpAuthService>();
             builder.Services.AddSingleton<NavigationService>();
             builder.Services.AddSingleton<SessionStorageService>();
+            builder.Services.AddSingleton<ScheduleService>();
 
             builder.Services.AddTransient<AuthPageViewModel>();
             builder.Services.AddTransient<MainPageViewModel>();
+            builder.Services.AddTransient<SchedulePageViewModel>();
 
             builder.Services.AddTransient<StartPage>();
             builder.Services.AddTransient<MainPage>();
             builder.Services.AddTransient<AuthPage>();
+            builder.Services.AddTransient<SchedulePage>();
 
             return builder;
         }

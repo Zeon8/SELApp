@@ -16,6 +16,11 @@ public partial class StartPage : ContentPage
         _navigation = navigationService;
         _sessionStorage = sessionStorage;
 
+        Loaded += StartPage_Loaded;
+    }
+
+    private void StartPage_Loaded(object? sender, EventArgs e)
+    {
         Task.Run(LoadPage);
     }
 

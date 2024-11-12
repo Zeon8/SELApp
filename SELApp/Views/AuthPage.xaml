@@ -8,8 +8,7 @@
     <StackLayout Spacing="10" VerticalOptions="Center" 
              HorizontalOptions="FillAndExpand" Margin="30,0">
         <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="20">
-            <Image Source="graduation.png" HeightRequest="64" VerticalOptions="Center"/>
-            <Label VerticalOptions="Center" FontSize="20">University Smart Education</Label>
+            <Image Source="logo" HeightRequest="64" VerticalOptions="Center"/>
         </StackLayout>
         <Label Text="Авторизація" HorizontalOptions="Center" FontSize="18"/>
         <Label Text="Номер телефону"/>

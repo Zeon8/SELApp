@@ -8,7 +8,8 @@
     <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="10">
         <StackLayout Orientation="Horizontal" Spacing="10">
             <Image Source="check.png" HeightRequest="32" VerticalOptions="Center"/>
-            <Label Text="{Binding GreetingMessage}" VerticalOptions="Center" FontSize="18"/>
+            <Label VerticalOptions="Center" FontSize="18" HorizontalOptions="Center"
+                   Text="{Binding User.ShortName, StringFormat='Вас авторизовано, {0}.'}"/>
         </StackLayout>
         <Label Text="Очікуйте подальших сповіщень." FontSize="18" HorizontalOptions="Center"/>
         <Button Text="Вийти з облікового запису" Command="{Binding SignoutCommand}"/>
